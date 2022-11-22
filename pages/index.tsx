@@ -4,8 +4,13 @@ import Image from 'next/image'
 import SocketIOClient from "socket.io-client";
 import Chat from "./components/Chats";
 import ButtonAction from "./components/ButtonAction";
-import { IMsg } from "./types/Message";
+
 import CustomInput from "./components/CustomInput";
+
+interface IMsg {
+  user: string;
+  msg: string;
+}
 
 // create random user
 const user = "User_" + String(new Date().getTime()).substr(-3);
@@ -34,8 +39,7 @@ export default function Home() {
 
     // update chat on new message dispatched
     socket.on("message", (message: IMsg) => {
-      chat.push(message);
-      setChat([...chat]);
+      setChat((chat) => [...chat, message]);
     });
 
     // socket disconnet onUnmount if exists

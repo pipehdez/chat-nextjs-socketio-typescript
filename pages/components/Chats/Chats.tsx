@@ -1,7 +1,11 @@
 import React from 'react'
-import {IMsg} from '../../types/Message'
+
 import ChatMessage from './ChatMessage'
 
+interface IMsg {
+  user: string;
+  msg: string;
+}
 type Props = {
   chat: IMsg[]
   user: string
