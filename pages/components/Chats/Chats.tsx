@@ -14,7 +14,7 @@ type Props = {
 function Chat({chat, user} : Props) {
   return (
     <div className="flex-1 p-4 font-mono">
-          {chat.length ? (
+          {chat?.length ? (
             chat.map((chat, i) => (
              <ChatMessage key={"msg_" + i} chat={chat} user={user} />
             ))
